@@ -101,6 +101,16 @@ class GPXWaypoint(mod_geo.Location):
                  name=None, description=None, symbol=None, type=None,
                  comment=None, horizontal_dilution=None, vertical_dilution=None,
                  position_dilution=None):
+        """
+        # TODO clean this up, might not be needed
+        type latitude: int | float
+        type longitude: int | float
+        type elevation: int | float
+        type time: time
+        type name: str | unicode
+        type description: str | unicode
+
+        """
         mod_geo.Location.__init__(self, latitude, longitude, elevation)
 
         self.time = time
@@ -162,6 +172,7 @@ class GPXRoute:
         self.number = number
 
         self.points = []
+        """ :type : list[GPXRoutePoint] """
 
     def remove_elevation(self):
         for point in self.points:
@@ -373,6 +384,7 @@ class GPXTrack:
         self.number = number
 
         self.segments = []
+        """ :type : list[GPXTrackSegment] """
 
     def simplify(self, max_distance=None):
         """
@@ -1221,6 +1233,12 @@ class GPXTrackSegment:
 
 class GPX:
     def __init__(self, waypoints=None, routes=None, tracks=None):
+        """
+        :type waypoints: list[GPXWaypoint]
+        :type routes: list[GPXRoute]
+        :type tracks: list[GPXTrack]
+        """
+
         if waypoints: self.waypoints = waypoints
         else: self.waypoints = []
 
