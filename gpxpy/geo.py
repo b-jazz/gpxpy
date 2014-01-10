@@ -287,6 +287,11 @@ class Location:
     elevation = None
 
     def __init__(self, latitude, longitude, elevation=None):
+        """
+        :type latitude: int | float
+        :type longitude: int | float
+        :type elevation: int | float
+        """
         self.latitude = latitude
         self.longitude = longitude
         self.elevation = elevation
