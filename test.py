@@ -1436,6 +1436,11 @@ class AbstractTests:
         self.assertTrue(gpx.routes[0].points[0].elevation == None)
         self.assertTrue(gpx.waypoints[0].elevation == None)
 
+    def test_time_difference(self):
+        gpx = self.parse('sloth-at-lemans.gpx')
+        seconds = gpx.tracks[0].segments[0].points[0].time_difference(gpx.tracks[0].segments[0].points[-1])
+        self.assertEquals(seconds, 86420)
+
 
 class LxmlTests(mod_unittest.TestCase, AbstractTests):
     def get_parser_type(self):
